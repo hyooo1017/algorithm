@@ -1,0 +1,31 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main(){
+    int a[9];
+    int sum = 0;
+    int flag = 0;
+   for(int i = 0; i < 9; i++){
+      cin >> a[i];
+      sum += a[i];
+   }
+    int n = sizeof(a)/sizeof(int);
+   for(int i = 0; i < n - 1; i++){
+      for(int j = i + 1; j < n; j++){
+         if((a[i] + a[j] == sum - 100) && (i != j)){
+            a[i] = 0;
+            a[j] = 0;
+            flag = 1;
+            break;
+         }
+      }
+      if(flag == 1)
+         break;
+   }
+   sort(a, a + 9);
+
+   for(int i = 2; i < 9; i++)
+      cout << a[i] << endl;
+   return 0;
+}
